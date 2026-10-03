@@ -36,6 +36,8 @@ rootProject.name = "SimpleRTSPStreamer"
 include(":rtsp")
 // The Android app needs the Android SDK; allow building/testing only the pure-JVM RTSP core
 // with `-PrtspOnly` (used for fast local checks without an Android SDK).
-if (!providers.gradleProperty("rtspOnly").isPresent) {
+if (providers.gradleProperty("rtspOnly").isPresent) {
+    rootProject.buildFileName = "build-rtsp-only.gradle.kts"
+} else {
     include(":app")
 }
