@@ -1,9 +1,9 @@
 # Simple RTSP Streamer
 
 Android-App, die die Kamera des Handys als **RTSP-Stream mit minimaler Latenz** im lokalen Netzwerk bereitstellt –
-gebaut für [OpenFollow](https://openfollow.app/), funktioniert aber mit jedem RTSP-Client (GStreamer, ffmpeg, VLC …).
+funktioniert aber mit jedem RTSP-Client (GStreamer, ffmpeg, VLC …).
 
-Das Handy arbeitet als **RTSP-Server**: OpenFollow (bzw. dessen `rtspsrc`) verbindet sich mit dem Handy und zieht den Stream.
+Das Handy arbeitet als **RTSP-Server**: VLC (bzw. dessen `rtspsrc`) verbindet sich mit dem Handy und zieht den Stream.
 
 ## Installation
 
@@ -13,13 +13,13 @@ Das Handy arbeitet als **RTSP-Server**: OpenFollow (bzw. dessen `rtspsrc`) verbi
 
 Mindestens Android 8.0 (API 26). Entwickelt und ausgelegt für das Google Pixel 7, läuft aber auf jedem Gerät mit Camera2- und H.264-Hardware-Encoder.
 
-## Einrichtung mit OpenFollow
+## Einrichtung mit VLC
 
-1. Handy und OpenFollow-Rechner im **selben Netzwerk** (Handy per WLAN oder Hotspot, OpenFollow per Ethernet).
+1. Handy und VLC-Rechner im **selben Netzwerk**
 2. In der App wird die Stream-Adresse angezeigt, z. B. `rtsp://192.168.2.177:1945/`. Antippen kopiert sie.
-3. In OpenFollow als Videoquelle **RTSP** wählen und genau diese Adresse eintragen.
+3. In VLC als Videoquelle Netzwerkstream wählen und genau diese Adresse eintragen.
 
-Standard-Port ist **1945** (wie in der bisherigen OpenFollow-Konfiguration); er lässt sich in den Einstellungen ändern.
+Standard-Port ist **1945**; er lässt sich in den Einstellungen ändern.
 Der Pfad ist egal – `rtsp://IP:1945/`, `rtsp://IP:1945/live` usw. liefern denselben Stream.
 
 ### Hinweise zur Ausrichtung des Bildes
@@ -55,9 +55,9 @@ Für lange Sitzungen empfiehlt sich in den Einstellungen **Akkuoptimierung deakt
 
 ## Fehlersuche
 
-| Symptom in OpenFollow | Ursache / Abhilfe |
+| Symptom in VLC | Ursache / Abhilfe |
 |---|---|
-| `Connection refused` / „Could not open resource“ | Streaming in der App nicht gestartet, falsche IP/Port, oder Handy und OpenFollow nicht im selben Netz (Client-Isolation im WLAN-Router?) |
+| `Connection refused` / „Could not open resource“ | Streaming in der App nicht gestartet, falsche IP/Port, oder Handy und VLC nicht im selben Netz (Client-Isolation im WLAN-Router?) |
 | Verbindung steht, aber „no data“ | Protokoll auf *TCP* lassen; Firewall zwischen den Geräten prüfen |
 | Bild steht auf dem Kopf | Handy um 180° drehen (siehe Hinweis in der App) |
 | Gelegentliche Bildfehler | Übertragung *TCP* verwenden, Bitrate senken, 5-GHz-WLAN oder Hotspot des Handys direkt nutzen |
@@ -91,4 +91,4 @@ gst-launch-1.0 rtspsrc location=rtsp://127.0.0.1:1945/ latency=0 ! rtph264depay 
 ### Signatur
 
 Die APK wird mit dem im Repository liegenden Schlüssel `keystore/release.jks` signiert. Dadurch lässt sich jede neue Version als Update über die
-vorherige installieren. Es ist ein Schlüssel zum Sideloaden, **kein** Play-Store-Schlüssel – für eine Veröffentlichung im Play Store bitte einen eigenen, geheimen Schlüssel verwenden.
+vorherige installieren.
