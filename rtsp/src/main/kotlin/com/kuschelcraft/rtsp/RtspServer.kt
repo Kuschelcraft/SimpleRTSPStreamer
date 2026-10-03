@@ -460,6 +460,8 @@ class RtspServer(
             // Accept frames from now on, but start the sender only after the response has been
             // written so media never overtakes the PLAY response on a TCP connection.
             playing = true
+            // Ask for the key frame first so it is already on its way when the response goes out.
+            events.onKeyFrameRequested()
             reply(
                 req, 200, "OK",
                 "Range" to "npt=0.000-",
@@ -476,7 +478,6 @@ class RtspServer(
             }
             log("Client $remoteName playing (${if (mode == Mode.TCP) "TCP" else "UDP"})")
             notifyClients()
-            events.onKeyFrameRequested()
         }
 
         private fun ssrcHex() = String.format(Locale.US, "%08X", ssrc)
