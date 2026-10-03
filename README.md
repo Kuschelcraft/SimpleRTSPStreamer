@@ -7,7 +7,7 @@ Das Handy arbeitet als **RTSP-Server**: OpenFollow (bzw. dessen `rtspsrc`) verbi
 
 ## Installation
 
-1. Auf GitHub unter **Releases** (oder unter **Actions → Build → Artifacts**) die Datei `SimpleRTSPStreamer.apk` herunterladen.
+1. Auf GitHub unter **Releases → „Latest build“** die Datei `SimpleRTSPStreamer.apk` herunterladen (direkt auf dem Handy im Browser möglich). Alternativ: **Actions → Build → Artifacts**.
 2. Die APK auf dem Handy öffnen und die Installation erlauben („Aus dieser Quelle installieren“).
 3. App starten, Kamera-Berechtigung erteilen, **Streaming starten** tippen.
 
