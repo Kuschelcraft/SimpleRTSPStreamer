@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand_primary">#0B6BCB</color>
+    <color name="brand_on_primary">#FFFFFF</color>
+    <color name="brand_container">#D6E8FF</color>
+    <color name="brand_on_container">#001C3A</color>
+    <color name="icon_background">#0F172A</color>
+    <color name="status_ok">#2E7D32</color>
+    <color name="status_warn">#E65100</color>
+    <color name="status_error">#C62828</color>
+    <color name="status_idle">#607D8B</color>
+</resources>

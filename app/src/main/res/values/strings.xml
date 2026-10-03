@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple RTSP Streamer</string>
+
+    <string name="status_ready">Ready</string>
+    <string name="status_starting">Starting…</string>
+    <string name="status_streaming">Streaming</string>
+    <string name="status_recovering">Camera interrupted – reconnecting…</string>
+    <string name="status_error">Error</string>
+
+    <string name="btn_start">Start streaming</string>
+    <string name="btn_stop">Stop streaming</string>
+    <string name="btn_settings">Settings</string>
+    <string name="btn_log">Log</string>
+
+    <string name="url_label">Stream address – enter this in OpenFollow</string>
+    <string name="url_copied">Address copied</string>
+    <string name="url_other">Also reachable at:\n%s</string>
+    <string name="no_network">No network address found. Connect to the Wi-Fi (or enable the hotspot / plug in Ethernet) and the address appears here.</string>
+    <string name="no_network_short">No network connection</string>
+
+    <string name="viewers_none">No viewer connected yet</string>
+    <string name="viewers_n">Connected viewers: %d</string>
+    <string name="stream_stats">%1$d×%2$d @ %3$d fps · sending %4$.1f Mbit/s</string>
+    <string name="stream_stats_idle">%1$d×%2$d @ %3$d fps · H.264</string>
+
+    <string name="preview_placeholder">The camera preview appears while streaming</string>
+    <string name="zoom_value">%.1f×</string>
+    <string name="zoom_label">Zoom</string>
+
+    <string name="hint_upright">Image is upright</string>
+    <string name="hint_upside_down">The stream is upside down – rotate the phone by 180°</string>
+    <string name="hint_sideways">The stream is sideways – hold the phone in landscape (camera on the left)</string>
+
+    <string name="permission_needed">Camera permission is required to stream.</string>
+    <string name="error_foreground">Could not start the streaming service: %s</string>
+    <string name="error_generic">Streaming could not be started: %s</string>
+
+    <string name="notification_channel">Streaming</string>
+    <string name="notification_title">Streaming via RTSP</string>
+    <string name="notification_text">%1$s · viewers: %2$d</string>
+    <string name="notification_recovering">Camera interrupted – reconnecting…</string>
+
+    <string name="log_title">Diagnostic log</string>
+    <string name="log_copy">Copy</string>
+    <string name="log_share">Share</string>
+    <string name="log_close">Close</string>
+    <string name="log_copied">Log copied</string>
+
+    <!-- Settings -->
+    <string name="cat_video">Video</string>
+    <string name="cat_network">Network</string>
+    <string name="cat_reliability">Reliability</string>
+    <string name="cat_about">About</string>
+    <string name="pref_camera">Camera</string>
+    <string name="pref_resolution">Resolution</string>
+    <string name="pref_fps">Frame rate</string>
+    <string name="pref_bitrate">Bitrate</string>
+    <string name="pref_profile">H.264 profile</string>
+    <string name="pref_gop">Key frame interval</string>
+    <string name="pref_port">RTSP port</string>
+    <string name="pref_port_summary">OpenFollow connects to rtsp://&lt;phone-ip&gt;:%s/ – any path works</string>
+    <string name="pref_transport">Transport</string>
+    <string name="pref_battery">Disable battery optimization</string>
+    <string name="pref_battery_summary">Recommended for long sessions with the screen off</string>
+    <string name="pref_version">Version</string>
+    <string name="port_invalid">Please enter a port between 1024 and 65535</string>
+    <string name="camera_back">Rear camera (ID %s)</string>
+    <string name="camera_front">Front camera (ID %s)</string>
+    <string name="camera_external">External camera (ID %s)</string>
+    <string name="settings_apply_hint">Changes are applied automatically when you return to the main screen.</string>
+
+    <string-array name="bitrate_entries">
+        <item>2 Mbit/s</item>
+        <item>4 Mbit/s</item>
+        <item>6 Mbit/s</item>
+        <item>8 Mbit/s</item>
+        <item>10 Mbit/s</item>
+        <item>15 Mbit/s</item>
+        <item>20 Mbit/s</item>
+        <item>30 Mbit/s</item>
+    </string-array>
+    <string-array name="bitrate_values">
+        <item>2</item>
+        <item>4</item>
+        <item>6</item>
+        <item>8</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="profile_entries">
+        <item>Baseline – lowest latency, most compatible</item>
+        <item>Main</item>
+        <item>High – best quality per bitrate</item>
+    </string-array>
+    <string-array name="profile_values">
+        <item>baseline</item>
+        <item>main</item>
+        <item>high</item>
+    </string-array>
+    <string-array name="gop_entries">
+        <item>Every second (fast recovery after packet loss)</item>
+        <item>Every 2 seconds</item>
+        <item>Every 3 seconds</item>
+        <item>Every 5 seconds</item>
+    </string-array>
+    <string-array name="gop_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="transport_entries">
+        <item>TCP – reliable, no picture glitches (recommended)</item>
+        <item>Automatic – whatever the viewer asks for</item>
+        <item>UDP – lowest latency, glitches on packet loss</item>
+    </string-array>
+    <string-array name="transport_values">
+        <item>tcp</item>
+        <item>auto</item>
+        <item>udp</item>
+    </string-array>
+</resources>

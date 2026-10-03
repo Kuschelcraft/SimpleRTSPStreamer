@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.SimpleRTSPStreamer" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#A8C8FF</item>
+        <item name="colorOnPrimary">#00315E</item>
+        <item name="colorPrimaryContainer">#00487F</item>
+        <item name="colorOnPrimaryContainer">#D6E8FF</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>

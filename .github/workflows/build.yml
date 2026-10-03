@@ -1,0 +1,63 @@
+name: Build
+
+on:
+  push:
+    branches: ["**"]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Install platform
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Unit tests (RTSP/RTP core)
+        run: ./gradlew :rtsp:test --console=plain
+
+      - name: Build installer (APK)
+        run: ./gradlew :app:assembleRelease --console=plain
+
+      - name: Collect APK
+        run: |
+          mkdir -p dist
+          cp "$(ls app/build/outputs/apk/release/*.apk | head -1)" dist/SimpleRTSPStreamer.apk
+          ls -la dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SimpleRTSPStreamer-apk
+          path: dist/SimpleRTSPStreamer.apk
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-reports
+          path: |
+            rtsp/build/reports/tests
+            app/build/reports
+          if-no-files-found: ignore
+
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/SimpleRTSPStreamer.apk
+          generate_release_notes: true

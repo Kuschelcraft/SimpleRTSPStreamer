@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="@string/cat_video"
+        app:iconSpaceReserved="false">
+
+        <ListPreference
+            android:key="camera_id"
+            android:title="@string/pref_camera"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:key="resolution"
+            android:title="@string/pref_resolution"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:key="fps"
+            android:title="@string/pref_fps"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:defaultValue="8"
+            android:entries="@array/bitrate_entries"
+            android:entryValues="@array/bitrate_values"
+            android:key="bitrate_mbps"
+            android:title="@string/pref_bitrate"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:defaultValue="baseline"
+            android:entries="@array/profile_entries"
+            android:entryValues="@array/profile_values"
+            android:key="profile"
+            android:title="@string/pref_profile"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/gop_entries"
+            android:entryValues="@array/gop_values"
+            android:key="gop_seconds"
+            android:title="@string/pref_gop"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/cat_network"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:defaultValue="1945"
+            android:key="port"
+            android:title="@string/pref_port"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:defaultValue="tcp"
+            android:entries="@array/transport_entries"
+            android:entryValues="@array/transport_values"
+            android:key="transport"
+            android:title="@string/pref_transport"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/cat_reliability"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            android:key="battery"
+            android:summary="@string/pref_battery_summary"
+            android:title="@string/pref_battery"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/cat_about"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            android:key="version"
+            android:selectable="false"
+            android:title="@string/pref_version"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+</PreferenceScreen>
