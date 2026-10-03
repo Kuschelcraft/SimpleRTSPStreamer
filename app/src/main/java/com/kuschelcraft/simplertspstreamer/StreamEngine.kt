@@ -225,12 +225,15 @@ class StreamEngine(
             f.setInteger(MediaFormat.KEY_PROFILE, config.profile.codecProfile)
             chooseLevel(caps)?.let { f.setInteger(MediaFormat.KEY_LEVEL, it) }
         }
-        // Low-latency hints; unknown keys are ignored by encoders that do not support them.
+        // Optional low-latency hints. Only tried on the first attempt so that a device which rejects
+        // one of them still ends up with a working encoder on the fallback attempts.
         f.setInteger(MediaFormat.KEY_PRIORITY, 0)
-        f.setInteger(MediaFormat.KEY_OPERATING_RATE, config.fps)
-        if (Build.VERSION.SDK_INT >= 30) f.setInteger(MediaFormat.KEY_LATENCY, 1)
-        if (Build.VERSION.SDK_INT >= 29) f.setInteger("max-bframes", 0)
-        f.setInteger("prepend-sps-pps-to-idr-frames", 1)
+        if (attempt == 0) {
+            f.setInteger(MediaFormat.KEY_OPERATING_RATE, config.fps)
+            if (Build.VERSION.SDK_INT >= 30) f.setInteger(MediaFormat.KEY_LATENCY, 1)
+            if (Build.VERSION.SDK_INT >= 29) f.setInteger("max-bframes", 0)
+            f.setInteger("prepend-sps-pps-to-idr-frames", 1)
+        }
         return f
     }
 
